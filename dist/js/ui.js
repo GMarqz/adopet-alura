@@ -12,12 +12,10 @@ function geraImagem(especieDoPet) {
     return __awaiter(this, void 0, void 0, function* () {
         if (especieDoPet === "felina") {
             const gato = yield catAPI.buscarCatImagens();
-            console.log(gato[0].url);
             return gato[0].url;
         }
         else if (especieDoPet === "canina") {
             const cao = yield dogAPI.buscarDogImagens();
-            console.log(cao[0].url);
             return cao[0].url;
         }
     });
