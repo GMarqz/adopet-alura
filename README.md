@@ -20,7 +20,7 @@ Utilizar o `json-server` para buscar dados de um arquivo `json`e renderizar esse
 
 Inicialmente, tentei utilizar o método `forEach()` para renderizar cada `card`. No entanto, para evitar que fotos de cães fossem associadas aos dados de gatos (ou vice-versa), criei a função `geraImagem(especieDoPet)` que gera uma imagem de cão para a espécie '**canina**' ou uma imagem de gato para a espécie '**felina**'.
 
-O problema é `gerarImagem(especieDoPet)` é assincrono e eu não poderia passar `await´ na *template string* tampouco guardar o resultado de função assincrona dentro de uma *variável* no `forEach`. 
+O problema é `gerarImagem(especieDoPet)` é assincrono e eu não poderia passar `await` na *template string* tampouco guardar o resultado de função assincrona dentro de uma *variável* no `forEach`. 
 O código abaixo ilustra essa limitação:
 
 ```javascript
