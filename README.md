@@ -2,6 +2,8 @@
 
 Solução para o primeiro exercício do curso [JavaScript: implementando CRUD com requisições HTTP](https://cursos.alura.com.br/course/javascript-implementando-crud-requisicoes-http) disponível na [Alura](www.alura.com.br).
 
+![Preview da página](./assets/images/Captura%20de%20tela%202024-12-09%20-%2012.29.13.png)
+
 ## Ferramentas utilizadas
 
 - [Bootstrap](https://getbootstrap.com)
