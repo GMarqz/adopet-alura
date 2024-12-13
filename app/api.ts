@@ -4,7 +4,7 @@ export interface DogsAndCatssApi {
 }
 
 export interface Pets {
-    id: string,
+    id?: string,
     especie: string,
     nome: string,
     raca: string
@@ -38,6 +38,23 @@ export const petApi = {
             const response: Response = await fetch("http://localhost:3000/pets");
             return await response.json();
         } catch(err) {
+            throw err;
+        }
+    },
+
+    async adicionaPet(pet: Pets): Promise<Pets[]> {
+        try {
+            const response: Response = await fetch('http://localhost:3000/pets', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(pet)
+            });
+            return await response.json();
+        }
+        catch(err) {
+            console.log("Erro com POST");
             throw err;
         }
     }

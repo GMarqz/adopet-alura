@@ -12,24 +12,49 @@ async function geraImagem(especieDoPet: string) {
 
 const ui = {
     async renderizaPets() {
-        const $petCards = document.getElementById("pet-cards") as HTMLElement;
         try{
             const pets: Pets[] = await petApi.buscarPet();
             for(const pet of pets) {
                 const imageUrl = await geraImagem(pet.especie);
-                $petCards.innerHTML += `
-                <div class="card" style="width: 18rem;">
-                    <img src="${imageUrl}" class="card-img-top" alt="Foto do ${pet.nome}" style="max-width: 100%; max-height: 10rem;">
-                    <div class="card-body bg-primary">
-                        <h5 class="card-title bs-success-text-emphasis">${pet.nome}</h5>
-                        <p class="card-text">${pet.raca}</p>
-                    </div>
-                </div>
-                 `;
+                ui.criaComponente(pet, imageUrl);
             }
         } catch(err) {
             throw err;
         }
+    },
+
+    criaComponente(pet: Pets, image: any): HTMLElement {
+        const $petCards = document.getElementById("pet-cards");
+
+        const $cardDiv = document.createElement("div") as HTMLDivElement;
+        $cardDiv.className = "card";
+        $cardDiv.setAttribute("style", "width: 18rem;");
+
+        const $cardTopImg = document.createElement("img") as HTMLImageElement;
+        $cardTopImg.src = image;
+        $cardTopImg.alt = `Foto do ${pet.nome}`;
+        $cardTopImg.className = "card-img-top";
+        $cardTopImg.setAttribute("style", "max-width: 100%");
+        $cardTopImg.setAttribute("style", "max-height: 10rem;")
+
+        const $cardBody = document.createElement("div") as HTMLDivElement;
+        $cardBody.className = "card-body bg-primary";
+
+        const $cardTitle = document.createElement("h5") as HTMLHeadingElement;
+        $cardTitle.className = "card-title bs-success-text-emphasis";
+        $cardTitle.textContent = pet.nome;
+
+        const $cardText = document.createElement("p") as HTMLParagraphElement;
+        $cardText.className = "card-text";
+        $cardText.textContent = pet.raca;
+
+        $cardBody.appendChild($cardTitle);
+        $cardBody.appendChild($cardText);
+        $cardDiv.appendChild($cardTopImg);
+        $cardDiv.appendChild($cardBody);
+        $petCards.appendChild($cardDiv);
+
+        return $petCards;
     }
 }
 

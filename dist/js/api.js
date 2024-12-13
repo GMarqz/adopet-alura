@@ -44,5 +44,23 @@ export const petApi = {
                 throw err;
             }
         });
+    },
+    adicionaPet(pet) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const response = yield fetch('http://localhost:3000/pets', {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(pet)
+                });
+                return yield response.json();
+            }
+            catch (err) {
+                console.log("Erro com POST");
+                throw err;
+            }
+        });
     }
 };

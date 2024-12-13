@@ -10,17 +10,63 @@
 </head>
 <body>
     <header class="d-flex flex-column gap-5" style="background-image: url(./assets/images/pets-3715733_1280.jpg); background-size: 100% 95%; background-repeat: no-repeat;">
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">Adopet</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Página inicial</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Serviços</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Sobre nós</a>
+                  </li>
+                </ul>
+                <form class="d-flex" role="search">
+                  <input class="form-control me-2" type="search" placeholder="Procurar" aria-label="Procurar">
+                  <button class="btn btn-outline-success" type="submit">Procurar</button>
+                </form>
+              </div>
+            </div>
+          </nav>
         <div class="d-flex flex-column justify-content-center align-items-center">
+            <div id="carouselExample" class="carousel slide"></div>
             <h1 class="contorno">Encontre o seu novo <span>melhor amigo</span></h1>
             <h2 class="contorno">Procure animais de estimação em nossa rede de mais de 14.500 abrigos e resgates</h2>
         </div>
 
     </header>
     <main class="d-flex flex-column p-3 gap-4 justify-content-center align-items-center">
-        <div class="d-flex justify-content-center">
+
+      <form id="form" style="width: 90%; padding: 2rem; border: 2px solid; border-radius: 10px;">
+        <div class="mb-3">
+          <h2>Adicionar novo pet</h2>
+          <label for="petName" class="form-label">Nome do pet</label>
+          <input type="text" class="form-control" id="petName" placeholder="Ex: Jão Carlos Matos da Silva Gomes de Faria Spyke Junior Segundo" required />
+        </div>
+        <div class="mb-3">
+          <label for="petRace" class="form-label">Raça do pet</label>
+          <input type="text" class="form-control" id="petRace" placeholder="Ex: Poodle" required />
+        </div>
+        <div class="mb-3">
+          <label for="petEspecie" class="form-label">Espécie do pet</label>
+          <input type="text" class="form-control" id="petEspecie" placeholder="Ex: Canina" required />
+        </div>
+        <button type="submit" class="btn btn-primary" id="adiciona-pet-btn">Adicionar Pet</button>
+        <button type="button" class="btn btn-secondary" id="cancela-btn">Cancelar</button>
+      </form>
+
+
+        <!-- <section class="d-flex gap-5 justify-content-center">
+              <div class="d-flex justify-content-center">
             <h1 class="contorno">Qual sua preferência?</h1>
         </div>
-        <section class="d-flex gap-5 justify-content-center">
             <div class="card d-flex align-items-center"  style="width: 8rem;" id="caes-btn">
                 <img src="./assets/images/dog.png" alt="" aria-hidden="true" width="64px" height="64px" />
                 <div class="card-body">
@@ -33,7 +79,7 @@
                 <h5 class="card-title">Gatos</h5>
             </div>
             </div>
-        </section>
+        </section> -->
         <h2>Pets disponívels para adoção</h2>
         <section class="d-flex flex-row flex-wrap gap-4 justify-content-center align-items-center" id="pet-cards"></section>
     </main>
