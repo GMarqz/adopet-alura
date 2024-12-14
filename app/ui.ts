@@ -11,9 +11,18 @@ async function geraImagem(especieDoPet: string) {
 }
 
 const ui = {
+
+    async preencherFormulario(petId: string) {
+        const pet = await petApi.buscarPetPorId(petId);
+        (document.getElementById("pet-id") as HTMLInputElement).value = pet.id;
+        (document.getElementById("petName") as HTMLInputElement).value = pet.nome;
+        (document.getElementById("petRace") as HTMLInputElement).value = pet.raca;
+        (document.getElementById("petEspecie") as HTMLInputElement).value = pet.especie;
+    },
+
     async renderizaPets() {
         try{
-            const pets: Pets[] = await petApi.buscarPet();
+            const pets: Pets[] = await petApi.buscarPets();
             for(const pet of pets) {
                 const imageUrl = await geraImagem(pet.especie);
                 ui.criaComponente(pet, imageUrl);
@@ -48,8 +57,17 @@ const ui = {
         $cardText.className = "card-text";
         $cardText.textContent = pet.raca;
 
+        const $penIcon = document.createElement("img") as HTMLImageElement;
+        $penIcon.src = "../assets/images/pencil.svg";
+        $penIcon.alt = "Edit";
+        $penIcon.className = "pencil-icon";
+        $penIcon.id = "pencil-icon";
+        $penIcon.setAttribute("style", "cursor: pointer;");
+        $penIcon.onclick = () => ui.preencherFormulario(pet.id);
+
         $cardBody.appendChild($cardTitle);
         $cardBody.appendChild($cardText);
+        $cardBody.appendChild($penIcon);
         $cardDiv.appendChild($cardTopImg);
         $cardDiv.appendChild($cardBody);
         $petCards.appendChild($cardDiv);

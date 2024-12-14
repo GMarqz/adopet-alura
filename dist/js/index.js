@@ -11,6 +11,8 @@ import { petApi } from "./api.js";
 import ui from "./ui.js";
 document.addEventListener("DOMContentLoaded", () => {
     ui.renderizaPets();
+    const $penIconBtn = document.getElementById("pencil-icon");
+    // $penIconBtn.addEventListener("click", )
     const $formControl = document.getElementById("form");
     $formControl.addEventListener("submit", manipulaFormulario);
     const $cancelaBtn = document.getElementById("cancela-btn");
@@ -30,11 +32,17 @@ function manipulaFormulario(event) {
     return __awaiter(this, void 0, void 0, function* () {
         event.preventDefault();
         // const $addPetBtn = document.getElementById("adiciona-pet-btn") as HTMLButtonElement;
+        const $petId = document.getElementById("pet-id").value;
         const $petName = document.getElementById("petName").value;
         const $petRace = document.getElementById("petRace").value;
-        const $petEspecie = document.getElementById("petEspecie").value;
+        const $petEspecie = document.getElementById("form-select").value;
         try {
-            yield petApi.adicionaPet({ especie: $petEspecie, nome: $petName, raca: $petRace });
+            if ($petId) {
+                yield petApi.editarPet({ id: $petId, nome: $petName, raca: $petRace, especie: $petEspecie });
+            }
+            else {
+                yield petApi.adicionaPet({ especie: $petEspecie, nome: $petName, raca: $petRace });
+            }
         }
         catch (_a) {
             alert("Deu erro");

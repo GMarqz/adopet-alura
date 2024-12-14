@@ -34,7 +34,7 @@ export const dogAPI = {
     }
 };
 export const petApi = {
-    buscarPet() {
+    buscarPets() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const response = yield fetch("http://localhost:3000/pets");
@@ -62,5 +62,34 @@ export const petApi = {
                 throw err;
             }
         });
-    }
+    },
+    buscarPetPorId(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const response = yield fetch(`http://localhost:3000/pets/${id}`);
+                return yield response.json();
+            }
+            catch (err) {
+                throw err;
+            }
+        });
+    },
+    editarPet(pet) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const response = yield fetch(`http://localhost:3000/pets/${pet.id}`, {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(pet)
+                });
+                return yield response.json();
+            }
+            catch (err) {
+                console.log("Erro com PUT");
+                throw err;
+            }
+        });
+    },
 };

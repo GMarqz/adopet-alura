@@ -47,6 +47,7 @@
       <form id="form" style="width: 90%; padding: 2rem; border: 2px solid; border-radius: 10px;">
         <div class="mb-3">
           <h2>Adicionar novo pet</h2>
+          <input type="hidden" id="pet-id" />
           <label for="petName" class="form-label">Nome do pet</label>
           <input type="text" class="form-control" id="petName" placeholder="Ex: Jão Carlos Matos da Silva Gomes de Faria Spyke Junior Segundo" required />
         </div>
@@ -54,11 +55,12 @@
           <label for="petRace" class="form-label">Raça do pet</label>
           <input type="text" class="form-control" id="petRace" placeholder="Ex: Poodle" required />
         </div>
-        <div class="mb-3">
-          <label for="petEspecie" class="form-label">Espécie do pet</label>
-          <input type="text" class="form-control" id="petEspecie" placeholder="Ex: Canina" required />
-        </div>
-        <button type="submit" class="btn btn-primary" id="adiciona-pet-btn">Adicionar Pet</button>
+        <select class="form-select mb-3" aria-label="Default select example" id="form-select">
+          <option selected>Selecione a espécie do pet</option>
+          <option value="canina">Canina</option>
+          <option value="felina">Felina</option>
+        </select>
+        <button type="submit" class="btn btn-primary" id="adiciona-pet-btn">Salvar Pet</button>
         <button type="button" class="btn btn-secondary" id="cancela-btn">Cancelar</button>
       </form>
 

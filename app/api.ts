@@ -33,7 +33,7 @@ export const dogAPI = {
 }
 
 export const petApi = {
-    async buscarPet(): Promise<Pets[]> {
+    async buscarPets(): Promise<Pets[]> {
         try {
             const response: Response = await fetch("http://localhost:3000/pets");
             return await response.json();
@@ -57,5 +57,29 @@ export const petApi = {
             console.log("Erro com POST");
             throw err;
         }
-    }
+    },
+    async buscarPetPorId(id: string): Promise<Pets> {
+        try {
+            const response: Response = await fetch(`http://localhost:3000/pets/${id}`);
+            return await response.json();
+        } catch(err) {
+            throw err;
+        }
+    },
+    async editarPet(pet: Pets): Promise<Pets> {
+        try {
+            const response: Response = await fetch(`http://localhost:3000/pets/${pet.id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(pet)
+            });
+            return await response.json();
+        }
+        catch(err) {
+            console.log("Erro com PUT");
+            throw err;
+        }
+    },
 }
