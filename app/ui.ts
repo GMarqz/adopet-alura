@@ -65,9 +65,25 @@ const ui = {
         $penIcon.setAttribute("style", "cursor: pointer;");
         $penIcon.onclick = () => ui.preencherFormulario(pet.id);
 
+        const $trashIcon = document.createElement("img") as HTMLImageElement;
+        $trashIcon.src = "../assets/images/trash.svg";
+        $trashIcon.alt = "Delete";
+        $trashIcon.className = "trash-icon";
+        $trashIcon.id = "trash-icon";
+        $trashIcon.setAttribute("style", "cursor: pointer;");
+        $trashIcon.onclick = async () => {
+            try {
+                await petApi.deletarPet(pet.id);
+                ui.renderizaPets();
+            } catch {
+                alert("Erro ao excluir pensamento");
+            }
+        }
+
         $cardBody.appendChild($cardTitle);
         $cardBody.appendChild($cardText);
         $cardBody.appendChild($penIcon);
+        $cardBody.appendChild($trashIcon);
         $cardDiv.appendChild($cardTopImg);
         $cardDiv.appendChild($cardBody);
         $petCards.appendChild($cardDiv);

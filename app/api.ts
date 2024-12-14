@@ -10,6 +10,8 @@ export interface Pets {
     raca: string
 }
 
+const URL_BASE = "http://localhost:3000";
+
 export const catAPI = {
     async buscarCatImagens(): Promise<DogsAndCatssApi> {
         try {
@@ -35,7 +37,7 @@ export const dogAPI = {
 export const petApi = {
     async buscarPets(): Promise<Pets[]> {
         try {
-            const response: Response = await fetch("http://localhost:3000/pets");
+            const response: Response = await fetch(`${URL_BASE}/pets`);
             return await response.json();
         } catch(err) {
             throw err;
@@ -44,7 +46,7 @@ export const petApi = {
 
     async adicionaPet(pet: Pets): Promise<Pets[]> {
         try {
-            const response: Response = await fetch('http://localhost:3000/pets', {
+            const response: Response = await fetch(`${URL_BASE}/pets`, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -60,7 +62,7 @@ export const petApi = {
     },
     async buscarPetPorId(id: string): Promise<Pets> {
         try {
-            const response: Response = await fetch(`http://localhost:3000/pets/${id}`);
+            const response: Response = await fetch(`${URL_BASE}/pets/${id}`);
             return await response.json();
         } catch(err) {
             throw err;
@@ -68,7 +70,7 @@ export const petApi = {
     },
     async editarPet(pet: Pets): Promise<Pets> {
         try {
-            const response: Response = await fetch(`http://localhost:3000/pets/${pet.id}`, {
+            const response: Response = await fetch(`${URL_BASE}/pets/${pet.id}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json"
@@ -82,4 +84,15 @@ export const petApi = {
             throw err;
         }
     },
+    async deletarPet(id: string){
+        try {
+            const response: Response = await fetch(`${URL_BASE}/pets/${id}`, {
+                method: "Delete"
+            });
+        }
+        catch(err) {
+            console.log("Erro ao deletar pet.");
+            throw err;
+        }
+    }
 }

@@ -7,6 +7,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+const URL_BASE = "http://localhost:3000";
 export const catAPI = {
     buscarCatImagens() {
         return __awaiter(this, void 0, void 0, function* () {
@@ -37,7 +38,7 @@ export const petApi = {
     buscarPets() {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const response = yield fetch("http://localhost:3000/pets");
+                const response = yield fetch(`${URL_BASE}/pets`);
                 return yield response.json();
             }
             catch (err) {
@@ -48,7 +49,7 @@ export const petApi = {
     adicionaPet(pet) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const response = yield fetch('http://localhost:3000/pets', {
+                const response = yield fetch(`${URL_BASE}/pets`, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -66,7 +67,7 @@ export const petApi = {
     buscarPetPorId(id) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const response = yield fetch(`http://localhost:3000/pets/${id}`);
+                const response = yield fetch(`${URL_BASE}/pets/${id}`);
                 return yield response.json();
             }
             catch (err) {
@@ -77,7 +78,7 @@ export const petApi = {
     editarPet(pet) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const response = yield fetch(`http://localhost:3000/pets/${pet.id}`, {
+                const response = yield fetch(`${URL_BASE}/pets/${pet.id}`, {
                     method: "PUT",
                     headers: {
                         "Content-Type": "application/json"
@@ -92,4 +93,17 @@ export const petApi = {
             }
         });
     },
+    deletarPet(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const response = yield fetch(`${URL_BASE}/pets/${id}`, {
+                    method: "Delete"
+                });
+            }
+            catch (err) {
+                console.log("Erro ao deletar pet.");
+                throw err;
+            }
+        });
+    }
 };
