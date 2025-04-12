@@ -14,7 +14,9 @@ document.addEventListener("DOMContentLoaded", () => {
     const $penIconBtn = document.getElementById("pencil-icon");
     // $penIconBtn.addEventListener("click", )
     const $formControl = document.getElementById("form");
-    $formControl.addEventListener("submit", manipulaFormulario);
+    $formControl.addEventListener("submit", () => {
+        manipulaFormulario();
+    });
     const $cancelaBtn = document.getElementById("cancela-btn");
     $cancelaBtn.addEventListener("click", () => {
         $formControl.reset();
@@ -28,9 +30,8 @@ $caesBtn.addEventListener(("click"), () => {
 $gatosBtn.addEventListener(("click"), () => {
     console.log("Gatos");
 });
-function manipulaFormulario(event) {
+function manipulaFormulario() {
     return __awaiter(this, void 0, void 0, function* () {
-        event.preventDefault();
         // const $addPetBtn = document.getElementById("adiciona-pet-btn") as HTMLButtonElement;
         const $petId = document.getElementById("pet-id").value;
         const $petName = document.getElementById("petName").value;
