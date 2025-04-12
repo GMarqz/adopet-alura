@@ -49,7 +49,7 @@
           <h2>Adicionar novo pet</h2>
           <input type="hidden" id="pet-id" />
           <label for="petName" class="form-label">Nome do pet</label>
-          <input type="text" class="form-control" id="petName" placeholder="Ex: Jão Carlos Matos da Silva Gomes de Faria Spyke Junior Segundo" required />
+          <input type="text" class="form-control" id="petName" placeholder="Ex: Jão Carlos Matos da Silva Gomes de Faria Spyke Junior II" required />
         </div>
         <div class="mb-3">
           <label for="petRace" class="form-label">Raça do pet</label>
@@ -64,27 +64,37 @@
         <button type="button" class="btn btn-secondary" id="cancela-btn">Cancelar</button>
       </form>
 
-
-        <!-- <section class="d-flex gap-5 justify-content-center">
-              <div class="d-flex justify-content-center">
+<!-------------------------------------------------------------------------------------------------------------------------->
+        <!-- <section class="d-flex gap-3 justify-content-center flex-column">
+          <div class="d-flex justify-content-center">
             <h1 class="contorno">Qual sua preferência?</h1>
-        </div>
+          </div>
+          <div class="pl-5 d-flex gap-5 flex-row">
             <div class="card d-flex align-items-center"  style="width: 8rem;" id="caes-btn">
-                <img src="./assets/images/dog.png" alt="" aria-hidden="true" width="64px" height="64px" />
+                <img src="./assets/images/dog.png" alt="Botão para listar cães." aria-hidden="true" width="64px" height="64px" />
                 <div class="card-body">
-                <h5 class="card-title">Cães</h5>
-            </div>
+                  <h5 class="card-title">Cães</h5>
+                </div>
             </div>
             <div class="card d-flex align-items-center"  style="width: 8rem;" id="gatos-btn">
-                <img src="./assets/images/cat.png" alt="" aria-hidden="true" width="64px" height="64px" />
+                <img src="./assets/images/cat.png" alt="Botaõ para listar gatos" aria-hidden="true" width="64px" height="64px" />
                 <div class="card-body">
-                <h5 class="card-title">Gatos</h5>
+                  <h5 class="card-title">Gatos</h5>
+                </div>
             </div>
-            </div>
+          </div>
         </section> -->
+<!------------------------------------------------------------------------------------------------------------------------------->
         <h2>Pets disponívels para adoção</h2>
         <section class="d-flex flex-row flex-wrap gap-4 justify-content-center align-items-center" id="pet-cards"></section>
     </main>
+
+    <footer class="d-flex justify-content-center text-bg-secondary">
+      Desenvolvido por  
+      <span>
+        <a href="www.github.com/GMarqz">Gabriel Marques</a>
+      </span>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script type="module" src="./dist/js/index.js"></script>
