@@ -3,13 +3,17 @@ import ui from "./ui.js"
 
 
 document.addEventListener("DOMContentLoaded", () => {
+
     ui.renderizaPets();
 
     const $penIconBtn = document.getElementById("pencil-icon");
     // $penIconBtn.addEventListener("click", )
 
     const $formControl = document.getElementById("form") as HTMLFormElement;
-    $formControl.addEventListener("submit", manipulaFormulario);
+    $formControl.addEventListener("submit", () => {
+    
+        manipulaFormulario();
+    });
 
     const $cancelaBtn = document.getElementById("cancela-btn") as HTMLButtonElement;
     $cancelaBtn.addEventListener("click", () => {
@@ -29,8 +33,7 @@ $gatosBtn.addEventListener(("click"), () => {
 });
 
 
-async function manipulaFormulario(event: Event) {
-    event.preventDefault();
+async function manipulaFormulario() {
     // const $addPetBtn = document.getElementById("adiciona-pet-btn") as HTMLButtonElement;
 
     const $petId = (document.getElementById("pet-id") as HTMLInputElement).value;
